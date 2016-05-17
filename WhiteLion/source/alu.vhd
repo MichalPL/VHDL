@@ -1,3 +1,7 @@
+--##########################################################################################--
+--########### GŁÓWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
+--############## AUTORZY TESTÓW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
+--##########################################################################################--
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -97,15 +101,15 @@ begin
 		when "10110" => --XOR
         DataOut <= DataIn1 xor DataIn2;
 		  FR <= "000";
-		  
+
 		-- resetowanie tr do uruchamiania procesora
 		when "11111" =>
         FR <= "000";
-		  
+
       when others =>
         DataOut <= "00000000";
 		  FR <= "111";
-		  
+
     end case;
   end process;
 end Behavioral;

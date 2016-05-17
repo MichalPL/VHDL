@@ -1,6 +1,6 @@
 --##########################################################################################--
---########### G£”WNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
---############## AUTORZY TEST”W: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
+--########### G≈Å√ìWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
+--############## AUTORZY TEST√ìW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
 --##########################################################################################--
 
 
@@ -31,7 +31,7 @@ entity top is
     DebugFR: out std_logic_vector(2 downto 0);
 	 LED: out std_logic_vector (7 downto 0)
 	 --LCD_DI: out std_logic_vector (3 downto 0)
-	
+
 );
 
 

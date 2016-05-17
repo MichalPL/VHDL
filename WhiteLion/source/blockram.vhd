@@ -1,3 +1,7 @@
+--##########################################################################################--
+--########### GŁÓWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
+--############## AUTORZY TESTÓW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
+--##########################################################################################--
 --modul RAM
 --4096*8 plik bitowy
 --jednoczesnse wsparcie wczytywania/zapisywania

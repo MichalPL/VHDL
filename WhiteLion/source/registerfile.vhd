@@ -1,3 +1,7 @@
+--##########################################################################################--
+--########### GŁÓWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
+--############## AUTORZY TESTÓW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
+--##########################################################################################--
 -- modul rejestrow
 -- w module znajduje sie 8 bitowe rejestry
 -- w module tym jest 8 rejestrow
