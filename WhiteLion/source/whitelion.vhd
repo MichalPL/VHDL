@@ -13,6 +13,4 @@ package whitelion is
 end whitelion;
 
 package body whitelion is
-
-
 end whitelion;

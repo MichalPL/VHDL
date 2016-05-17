@@ -2,8 +2,6 @@
 --########### GŁÓWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
 --############## AUTORZY TESTÓW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
 --##########################################################################################--
-
-
 --Komponent zarzadzania pamiecia
 --oraz zarzadzania komponentami takimi jak core
 library IEEE;

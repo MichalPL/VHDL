@@ -13,7 +13,6 @@ use work.whitelion.all;
 
 entity core is
   port(
-
     --interfejs pamieci
     MemAddr: out std_logic_vector(15 downto 0); --adres pamieci przechowywany w postaci bajtowej
     MemWW: out std_logic;

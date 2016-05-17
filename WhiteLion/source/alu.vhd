@@ -25,7 +25,7 @@ begin
   process(DataIn1, DataIn2, Op)
   begin
 
-    case Op is
+  case Op is
 --operacje reallizowane w ALU
       when "00000" => --dodawanie
         DataOut <= std_logic_vector(signed(DataIn1) + signed(DataIn2));

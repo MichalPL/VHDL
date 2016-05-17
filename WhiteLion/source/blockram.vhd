@@ -26,6 +26,7 @@ entity blockram is
   );
 end blockram;
 
+
 architecture Behavioral of blockram is
 	--sygnaly ram
     type ram_type is array (255 downto 0) of std_logic_vector (7 downto 0);

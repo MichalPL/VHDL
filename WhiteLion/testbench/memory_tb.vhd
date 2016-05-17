@@ -1,3 +1,7 @@
+--##########################################################################################--
+--########### GŁÓWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
+--############## AUTORZY TESTÓW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
+--##########################################################################################--
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -80,7 +84,7 @@ BEGIN
     WriteWord <= '1';		--znow staramy sie zapisac cale 16-bitowe slowo wrzucajac wartosc '5215'
     WriteEnable <= '1';
     DataIn <= x"5215";
-    wait for 10 ns;			--nie zmienilismy mozliwosci odczytu dla adresu '0122', wiec wciaz nam sprawdza wartosc pod adresem '0100' 
+    wait for 10 ns;			--nie zmienilismy mozliwosci odczytu dla adresu '0122', wiec wciaz nam sprawdza wartosc pod adresem '0100'
     assert (DataOut = x"1234") report "Brak zmiany, awaria bloku RAM" severity error;
     WriteWord <= '0';		--ustawiamy mozliwosc odczytu, lecz zmieniamy znow na adres '0100',
     WriteEnable <= '0';		--sprawdzajac czy dalej jest tam ta sama wartosc, jesli nie to awaria pamieci
@@ -120,13 +124,13 @@ BEGIN
 
     Address <= x"0001";		--ustawiamy adres '0001', ktory jest przeznaczony dla portu0,
     Port0 <= "ZZZZZZ1Z";	--ustawiajac tam wartosc 'ZZZZZZ1Z'
-    WriteWord<='0';			
+    WriteWord<='0';
     WriteEnable <= '1';		--ustawiamy mozliwosc zapisu tylko bajtu i wrzucamy wartosc '1'
-    DataIn <= x"0001";		
+    DataIn <= x"0001";
     wait for 10 ns;
     WriteEnable <= '0';		--manipulujemy odczytem/zapisem i zmiana adresu i czekamy
     Address <= x"1234";
-    wait for 20 ns;		
+    wait for 20 ns;
     WriteEnable <= '1';		--zmieniamy na mozliwosc zapisu
     Address <= x"0000";		--zmieniamy na adres '0000', ktory jest tez przeznaczony dla portu0, czyli manipulujemy na wartosciach portu
     DataIn <= x"0001";		--i ustawiamy '1'
@@ -144,7 +148,7 @@ BEGIN
     WriteEnable <= '1';		--czyli w rezultacie wsadzamy '00111000'
     DataIn <= b"00000000_0011_1000";
     wait for 10 ns;
-    Address <= x"0000";		--zmieniamy na adres '0000' 
+    Address <= x"0000";		--zmieniamy na adres '0000'
     Port0 <= "10ZZZ101";	--port0 ustawiamy na wartosc '10ZZZ101'
     DataIn <= x"00" & b"00_101_011";	--sprawdzamy mozliwosc zapisu dwojakiego laczonego, heksadymalnie dwa zera a reszta bajtowo,
     wait for 10 ns;							--czyli w rezultacie powinno byc w datain '0000000000101011'

@@ -5,7 +5,6 @@
 -- modul rejestrow
 -- w module znajduje sie 8 bitowe rejestry
 -- w module tym jest 8 rejestrow
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;

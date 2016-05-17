@@ -31,5 +31,6 @@ begin
         AddressOut <= "ZZZZZZZZZZZZZZZZ";
       end if;
   end process;
+  
   IROut <= IR;
 end Behavioral;
