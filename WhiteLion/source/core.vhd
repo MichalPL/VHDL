@@ -173,7 +173,7 @@ begin
   opmain <= IR(15 downto 11);
   opimmd <= IR(7 downto 0);
   opreg1 <= IR(10 downto 8);
-  opreg2 <= IR(7 downto 5);
+  opreg2 <= IR(2 downto 0);
 
 
   -- PORTY DO DEBUGOWANIA CS, IP ORAZ REJESTROW

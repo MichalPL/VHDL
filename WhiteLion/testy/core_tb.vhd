@@ -116,10 +116,7 @@ BEGIN
 
     Reset <= '0';
 	 wait for 20 ns;
-    
-	 
-	 
-	 
+
 	 MemIn <= b"0011000011111111";
     wait for 20 ns; --fetcher potrzebuje 20ns aby zadzialac
     assert(DebugA = b"11111111") report "Zaladowanie '11111111' do R0 nie jest poprawne" severity error;
@@ -127,7 +124,6 @@ BEGIN
 	 MemIn <= b"0011000011110000";
     wait for 20 ns;
 	 assert(DebugA = b"11110000") report "Zaladowanie '11110000' do R0 nie jest poprawne" severity error;
-
 
 	 MemIn <= b"0011000000000111"; -- mov a, 111
     wait for 20 ns;
@@ -161,9 +157,9 @@ BEGIN
     wait for 20 ns;
 	 assert(DebugR1 = b"00000001") report "Zaladowanie '001' do R3 nie jest poprawne" severity error;
 
-	 MemIn <= b"0000101001100000"; --add r0, r3
+	 MemIn <= b"0000101000000011"; --add r0, r3
     wait for 20 ns;
-	 assert(DebugR0 = b"00001000") report "Dodanie R3 do R2 nie jest poprawne" severity error;
+	 assert(DebugR0 = b"00001000") report "Dodanie R0 do R3 nie jest poprawne" severity error;
 
 	  MemIn <= b"0000000000000011"; --add 11
     wait for 20 ns;
@@ -202,9 +198,6 @@ BEGIN
     severity note;
 
     wait;
-
-
-
     wait;
   end process;
 

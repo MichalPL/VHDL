@@ -99,19 +99,13 @@ BEGIN
     assert (DataOut(0)=x"55") report "Zapis podczas odczytu, blad" severity error;
     wait for 10 ns;
 
-
-
-
-
     assert false
     report "Test registerfile zakonczony pomyslnie!"
     severity note;
 
     wait;
-
-
-
     wait;
+	 
   end process;
 
 

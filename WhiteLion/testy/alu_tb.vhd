@@ -143,8 +143,8 @@ BEGIN
     severity note;
 
     wait;
-
     wait;
+	 
   end process;
 
 

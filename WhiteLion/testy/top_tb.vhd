@@ -83,28 +83,10 @@ BEGIN
     wait for clock_period/2;
   end process;
 
-
-  -- proces symulacji
   stim_proc: process
     variable err_cnt: integer :=0;
   begin
     Port0 <= "ZZZZZZZZ";
-    -- zatrzymanie w stanie resetu na 100ns
-    Reset <= '0';
-    wait for 10 ns;
-    Reset <= '1';
-    wait for 200 ns;
-    Reset <= '0';
-    wait for 50 ns;
-    --Port0(1) <= '1';
-    --wait for 200 ns;
-    --assert(Port0(0)='1') report "Przelacznik nie dziala" severity error;
-    --wait for 10 ns;
-    --Port0(1) <= '0';
-    --wait for 200 ns;
-    --assert(Port0(0)='0') report "Przelacznik nie dziala" severity error;
-
-
     Reset <= '1';
     wait for 100 ns;
     wait for 10 ns;
@@ -112,18 +94,16 @@ BEGIN
     wait for 10 ns;
     assert (HoldAck ='1') report "HoldAck nie jest w stanie wysokim" severity error;
     
-	 
-	 
 	 --zaladowanie kodow operacji do pamieci
     DMA <= '1';
     WriteEnable <= '1';
 
     Address <= b"0000000100000100";
-    Data <= b"0011000001100100"; -- mov a, 100
+    Data <= b"0011000001110000"; -- mov a, 112
     wait for 10 ns;
 	 
 	 Address <= b"0000000100000110";
-    Data <= b"0011000101001011"; -- mov b, 75
+    Data <= b"0011000101001000"; -- mov b, 72
     wait for 10 ns;
     
 	 Address <= b"0000000100001000";
@@ -143,7 +123,7 @@ BEGIN
     wait for 10 ns;
 	 
 	 Address <= b"0000000100010100";
-	 Data <= b"0001000100011001"; -- sub b, 25
+	 Data <= b"0001100100000000"; -- subx b, a
     wait for 10 ns;
 	 
 	 Address <= b"0000000100011000";
@@ -151,17 +131,15 @@ BEGIN
     wait for 10 ns;
 	 	 
 	 Address <= b"0000000100011010";
-    Data <= b"0001000001001011"; -- sub a, 75
+    Data <= b"0001100000000001"; -- subx a, b
     wait for 10 ns;
 
 	 Address <= b"0000000100011110";
     Data <= b"1001000000001000"; -- jmp petla
     wait for 10 ns;
-
-		
-	 
+ 
 	 Address <= b"0000000100100010";
-    Data <= b"0011101100000000"; -- movx r1, a
+    Data <= b"0011101100000000"; -- movx r1, a  -- przeniesienie koncowego wyniku do r1
     wait for 10 ns;
 	
 
@@ -170,7 +148,6 @@ BEGIN
     wait for 10 ns;
     Hold <= '0';
     wait for 10 ns;
-
 
 		Reset <= '0';
     --uruchom procesor
@@ -182,8 +159,6 @@ BEGIN
    severity note;
 
     wait;
-
-	
     wait;
   end process;
 

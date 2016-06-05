@@ -1,5 +1,42 @@
-CHANGELOG
+Copyright (C) Jakub Obacz, Micha³ Popek, Wiktor Bajewski, Mateusz Wolak
 
-1. Napisano nowe testy testuj¹ce mo¿liowœci procesora - Kuba
-2. Poprawiono kod ALU, core i top - Michal i Kuba
-3. Usprawniono dzia³anie poszczególnych komponentów - Michal i Kuba
+Niniejszy program jest wolnym oprogramowaniem; mo¿esz go 
+rozprowadzaæ dalej i/lub modyfikowaæ na warunkach Powszechnej
+Licencji Publicznej GNU, wydanej przez Fundacjê Wolnego
+Oprogramowania - wed³ug wersji 2-giej tej Licencji lub którejœ
+z póŸniejszych wersji. 
+Niniejszy program rozpowszechniany jest z nadziej¹, i¿ bêdzie on 
+u¿yteczny - jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet domyœlnej 
+gwarancji PRZYDATNOŒCI HANDLOWEJ albo PRZYDATNOŒCI DO OKREŒLONYCH 
+ZASTOSOWAÑ.
+
+
+Finalny test algorytmu euklidesa dla NWD dwóch liczb znajduje siê w testach jednostki top. 
+Pocz¹tkowo zapisywane s¹ kody operacji pod konkretne adresy w pamiêci, nastêpnie operacje s¹ wykonywane.
+W algorytmie wykorzystujemy:
+- skoki
+- skoki warunkowe
+- operacje przeniesienia sta³ych do rejestrów
+- operacje arytmetyczne (odejmowanie) na rejestrach
+- operacje przenoszenia pomiêdzy rejestrami
+
+Aby uruchomiæ test nale¿y uruchomiæ testbench jednostki top. Algorytm NWD by³ sprawdzany dla liczb:
+
+100 i 75
+21 i 6
+112 i 72
+
+Obecnie przy uruchomieniu NWD testowane jest dla 112 i 72. Wartoœci te mo¿na zmieniaæ edytuj¹c w testbenchu pierwsze dwie wpisywane instrukcje
+mov a, 112
+mov b, 72
+
+Wpisuj¹c na ostatnie 8 bitów odpowiednie liczby w kodzie U2.
+
+Kod znajduje siê w folderach source (kod Ÿród³owy) oraz testbench (testy).
+Dodatkowo jest dostêpny pod adresem https://github.com/MichalPL/VHDL
+
+Autorzy kodu: Jakub Obacz (Sefto), Micha³ Popek (MichalPL)
+Autorzy testów: Wiktor Bajewski, Mateusz Wolak
+
+Czêœæ wykorzystanego kodu pochodzi z gotowego kodu oraz dokumentacji dla jednostki Spartan 3E (g³ównie kody jednostek pamiêci)
+
