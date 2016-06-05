@@ -1,7 +1,8 @@
 --##########################################################################################--
---########### GŁÓWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
---############## AUTORZY TESTÓW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
+--########### GLOWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
+--############# AUTORZY TESTOW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ################--
 --##########################################################################################--
+
 --MODUL CORE
 --modul dekodujacy i laczacy podlegajace mu komponenty takie jak registerfile,fetcher,alu
 
@@ -13,6 +14,7 @@ use work.whitelion.all;
 
 entity core is
   port(
+  
     --interfejs pamieci
     MemAddr: out std_logic_vector(15 downto 0); --adres pamieci przechowywany w postaci bajtowej
     MemWW: out std_logic;
@@ -181,7 +183,7 @@ begin
   DebugR1 <= regOut(3);
   DebugR2 <= regOut(4);
   DebugR3 <= regOut(5);
-
+  
   DebugIP <= regOut(REGIP);
   DebugIR <= IR;
   DebugFR <= FR;
@@ -199,13 +201,13 @@ begin
         InReset <= '1';
         state <= ResetProcessor;
         HoldAck <= '0';
-
-        regWE <= (others => '1');
-        regIn <= (others => "00000000"); --resetowanie rejestr�w
+		  
+        regWE <= (others => '1'); 
+        regIn <= (others => "00000000"); --resetowanie rejestr�w
 		  regIn(REGIP) <= (others => '0'); -- resetowanie instruction pointera
         regWE(REGIP) <= '1';
 		  AluOp <= "11111"; -- resetowanie rejestru flagowego w ALU
-
+		  
         regbank <= '0';
         fetchEN <= '1';
         OpDataOut <= "ZZZZZZZZZZZZZZZZ";
@@ -218,17 +220,17 @@ begin
         OpDestReg2 <= x"0";
         OpUseReg2 <= '0';
         --zakoncz przypisywanie
-
+		  
       elsif InReset='1' and reset='0' and Hold='0' then --Jezli w InReset 1 zacznij wykonywac dzialania
         InReset <= '0';
         fetchEN <= '1';
         state <= FirstFetch1;
-
+		  
       elsif Hold = '1' and (state=HoldMemory or state=Execute or state=ResetProcessor) then
         state <= HoldMemory;
         HoldAck <= '1';
         FetchEN <= '0';
-
+		  
       elsif Hold='0' and state=HoldMemory then
         if reset='1' or InReset='1' then
           state <= ResetProcessor;
@@ -236,22 +238,22 @@ begin
           state <= Execute;
         end if;
         FetchEN <= '1';
-
+      
 		elsif state=FirstFetch1 then --trzeba pozwolic rejestrowi instrukcji zaladowac sie przed tym jak przejdziemy do wykonywania czynnosci
         regWE <= (others => '0');
         fetchEN <= '1';
-        regWE <= (others => '0');
+        regWE <= (others => '0');	
         RegWE <= (others => '0');
         regIn(REGIP) <= std_logic_vector(unsigned(regIn(REGIP))+2);
         regWE(REGIP) <= '1';
         state <= Execute;
-
+      
 		elsif state=FirstFetch2 then
         state <= FirstFetch3;
-
+      
 		elsif state=FirstFetch3 then
         state <= Execute;
-
+      
 		elsif state=WaitForMemory then
         state <= Execute;
         FetchEn <= '1';
@@ -263,7 +265,7 @@ begin
             regWE(to_integer(unsigned(OpDestReg2))) <= '1';
           end if;
         end if;
-
+      
 		elsif state=WaitForAlu then
         state <= Execute;
         regIn(to_integer(unsigned(AluRegOut))) <= AluOut;  -- zapis wyniku operacji do rejestru
@@ -276,7 +278,7 @@ begin
 
 		if state=Execute then
         fetchEN <= '1';
-
+ 
         RegWE <= (others => '0');
 
 		  regIn(REGIP) <= std_logic_vector(unsigned(regIn(REGIP))+2);
@@ -406,25 +408,25 @@ begin
 				when "10010" => --JUMP
 					regIn(REGIP) <= opimmd;
 					regWE(REGIP) <= '1';
-
+					
 				when "11001" => --JW
 					if(AluFR = "100") then
 						regIn(REGIP) <= opimmd;
 						regWE(REGIP) <= '1';
 					end if;
-
+					
 				when "11010" => --JR
 					if(AluFR = "010") then
 						regIn(REGIP) <= opimmd;
-						regWE(REGIP) <= '1';
+						regWE(REGIP) <= '1';	
 					end if;
-
+					
 				when "11000" => --JM
 					if(AluFR = "001") then
 						regIn(REGIP) <= opimmd;
 						regWE(REGIP) <= '1';
 					end if;
-
+					
 				when "10011" => --NOP
 
 				when "10101" => --XOR  reg, imm

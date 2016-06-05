@@ -1,13 +1,9 @@
---##########################################################################################--
---########### GŁÓWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
---############## AUTORZY TESTÓW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
---##########################################################################################--
 --modul RAM
 --4096*8 plik bitowy
 --jednoczesnse wsparcie wczytywania/zapisywania
---16 bitowa lub 8 bitowa magistrala danych
+--16 lub 8 bitowa magistrala danych
 --16 bitowy adres magistrali
---Przy Reset, zaladuje "defaultowy" obraz RAM
+--reset laduje "defaultowy" obraz RAM
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -25,7 +21,6 @@ entity blockram is
     DataOut: out std_logic_vector(15 downto 0)
   );
 end blockram;
-
 
 architecture Behavioral of blockram is
 	--sygnaly ram

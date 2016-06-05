@@ -1,7 +1,4 @@
---##########################################################################################--
---########### GŁÓWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
---############## AUTORZY TESTÓW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
---##########################################################################################--
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 
@@ -13,4 +10,6 @@ package whitelion is
 end whitelion;
 
 package body whitelion is
+
+ 
 end whitelion;

@@ -1,7 +1,10 @@
 --##########################################################################################--
---########### GŁÓWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
---############## AUTORZY TESTÓW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
+--########### GLOWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
+--############# AUTORZY TESTOW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ################--
 --##########################################################################################--
+
+-- modul przekazujacy dane
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -31,6 +34,5 @@ begin
         AddressOut <= "ZZZZZZZZZZZZZZZZ";
       end if;
   end process;
-  
   IROut <= IR;
 end Behavioral;

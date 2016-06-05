@@ -1,9 +1,10 @@
 --##########################################################################################--
---########### GŁÓWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
---############## AUTORZY TESTÓW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
+--########### GLOWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
+--############# AUTORZY TESTOW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ################--
 --##########################################################################################--
---Komponent zarzadzania pamiecia
---oraz zarzadzania komponentami takimi jak core
+
+--Komponent zarzadzania pamiecia oraz core
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -29,14 +30,10 @@ entity top is
     DebugFR: out std_logic_vector(2 downto 0);
 	 LED: out std_logic_vector (7 downto 0)
 	 --LCD_DI: out std_logic_vector (3 downto 0)
-
 );
 
 
 end top;
-
-
-
 
 architecture Behavioral of top is
 ---type LED_Array_Port: std_logic_vector ( 7 downto 0);

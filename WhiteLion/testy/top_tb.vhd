@@ -1,7 +1,3 @@
---##########################################################################################--
---########### GŁÓWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
---############## AUTORZY TESTÓW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
---##########################################################################################--
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -115,67 +111,71 @@ BEGIN
     Hold <= '1';
     wait for 10 ns;
     assert (HoldAck ='1') report "HoldAck nie jest w stanie wysokim" severity error;
-
-
-
+    
+	 
+	 
 	 --zaladowanie kodow operacji do pamieci
     DMA <= '1';
     WriteEnable <= '1';
 
     Address <= b"0000000100000100";
-    Data <= b"0011000000000001"; -- mov a, 1
+    Data <= b"0011000001100100"; -- mov a, 100
     wait for 10 ns;
-
+	 
 	 Address <= b"0000000100000110";
-    Data <= b"0011000000000011"; -- mov a, 11
+    Data <= b"0011000101001011"; -- mov b, 75
     wait for 10 ns;
-
+    
 	 Address <= b"0000000100001000";
-    Data <= b"0011000000000111"; -- mov a, 111
+    Data <= b"0101100100000000"; -- cmpx a, b
     wait for 10 ns;
-
-	  Address <= b"0000000100001010";
-    Data <= b"0011000000001111"; -- mov a, 1111
+	 
+	 Address <= b"0000000100001100";
+    Data <= b"1100000100011010"; -- JM
     wait for 10 ns;
-
-	  Address <= b"0000000100001110";
-    Data <= b"0011000000011111"; -- mov a, 11111
+	 
+	 Address <= b"0000000100001110";
+    Data <= b"1100100100010100"; -- JW
     wait for 10 ns;
-
+	 
 	 Address <= b"0000000100010000";
-    Data <= b"0011000000111111"; -- mov a, 111111
+    Data <= b"1101000000100010"; -- JR - jump koniec
+    wait for 10 ns;
+	 
+	 Address <= b"0000000100010100";
+	 Data <= b"0001000100011001"; -- sub b, 25
+    wait for 10 ns;
+	 
+	 Address <= b"0000000100011000";
+    Data <= b"1001000000001000"; -- jmp petla
+    wait for 10 ns;
+	 	 
+	 Address <= b"0000000100011010";
+    Data <= b"0001000001001011"; -- sub a, 75
     wait for 10 ns;
 
-	 Address <= b"0000000100010010";
-    Data <= b"0011000001111111"; -- mov a, 1111111
+	 Address <= b"0000000100011110";
+    Data <= b"1001000000001000"; -- jmp petla
     wait for 10 ns;
 
-
-	Address <= b"0000000100010100";
-    Data <= b"0101000001111111"; -- cmp a, 1111111
+		
+	 
+	 Address <= b"0000000100100010";
+    Data <= b"0011101100000000"; -- movx r1, a
     wait for 10 ns;
+	
 
-	 Address <= b"0000000100010110";
-    Data <= b"1101000000000010"; -- jump jezeli rowne
-    wait for 10 ns;
-
-
-
-    --poczekaj 10 ns
+    --poczekaj 10 ns	
     DMA <= '0';
     wait for 10 ns;
     Hold <= '0';
     wait for 10 ns;
 
-    --uruchom procesor
 
-    Reset <= '0';
+		Reset <= '0';
+    --uruchom procesor
     wait for 30 ns; --zaczekaj 3 cykle zegara zanim CPU zacznie wykonywac instrukcje
     wait for 20 ns; --zaczekaj 2 cykle zegara aby zdekodowal instrukcje
-    assert(Debugr0 = b"00000001") report "R0 nie jest prawidlowo zaladowany dla pierwszej instrukcji" severity error;
-    wait for 20 ns;
-    assert(DebugR0 = b"00000011") report "R0 nie jest prawidlowo zaladowany dla drugiej instrukcji" severity error;
-
 
    assert false
    report "Test top zakonczony pomyelnie!"
@@ -183,7 +183,7 @@ BEGIN
 
     wait;
 
-
+	
     wait;
   end process;
 

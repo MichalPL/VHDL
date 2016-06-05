@@ -1,7 +1,3 @@
---##########################################################################################--
---########### GŁÓWNI AUTORZY KODU DO IMPEMENTACJI: JAKUB OBACZ, MICHAL POPEK ###############--
---############## AUTORZY TESTÓW: MATEUSZ WOLAK, WIKTOR BAJEWSKI, JAKUB OBACZ ###############--
---##########################################################################################--
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -135,7 +131,7 @@ BEGIN
     DataIn2 <= "11111110";
     wait for 10 ns;
 		assert (DataOut="01111111") report "Blad operacji xor" severity error;
-
+		
 		Op <= "10101"; --xor
     DataIn1 <= "10000001";
     DataIn2 <= "11111110";
